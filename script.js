@@ -1,4 +1,3 @@
-
 // Initialize particles
 function createParticles() {
   const particlesContainer = document.getElementById("particles");
@@ -60,20 +59,20 @@ if (contactForm) {
     e.preventDefault();
     const submitBtn = contactForm.querySelector(".submit-btn");
     const originalBtnText = submitBtn.textContent;
-    
+
     // Feedback: Loading state
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
     const formData = new FormData(contactForm);
-    
+
     try {
       const response = await fetch(contactForm.action, {
         method: contactForm.method,
         body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          Accept: "application/json",
+        },
       });
 
       if (response.ok) {
@@ -83,14 +82,16 @@ if (contactForm) {
       } else {
         // Error handling
         const data = await response.json();
-        if (Object.hasOwn(data, 'errors')) {
-          alert(data["errors"].map(error => error["message"]).join(", "));
+        if (Object.hasOwn(data, "errors")) {
+          alert(data["errors"].map((error) => error["message"]).join(", "));
         } else {
           alert("Oops! There was a problem submitting your form.");
         }
       }
     } catch {
-      alert("Oops! There was a problem submitting your form. Please check your connection.");
+      alert(
+        "Oops! There was a problem submitting your form. Please check your connection.",
+      );
     } finally {
       // Restore button state
       submitBtn.disabled = false;
@@ -108,7 +109,6 @@ const defaultConfig = {
   about_mission:
     "To leverage data science and AI to solve real-world business problems and create impactful solutions. I'm committed to continuous learning and excelling in analytics and machine learning.",
   contact_email: "mouryamanideepkandregula@gmail.com",
-  contact_phone: "+91-7207434389",
   contact_location: "Phagwara, Punjab, India",
 };
 
